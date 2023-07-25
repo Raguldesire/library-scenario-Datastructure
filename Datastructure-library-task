@@ -1,0 +1,64 @@
+class library: # create a class library 
+  def __init__(self,book):
+    self.book_list=book
+  def show(self):
+    print(*self.book_list)
+  def lend_book(self,book_name):                           #Lend a book to the customer
+    if book_name in self.book_list:
+      self.book_list.remove(book_name)
+      print("thank you,book issued")
+      return True
+    else:
+      print("book is not available")
+      return False
+  def update_book(self,book_name):                         #Update a booklist
+    self.book_list.append(book_name)
+    print("list updated")
+
+class customer: #create a customer library 
+  def __init__(self):
+    self.booklist=[]
+  def add_book(self,book):                                 #Adding a book on customer's profile
+      self.booklist.append(book)
+  def show(self):
+    print(self.booklist)
+  def requested_book(self):                                #Requesting a book
+    print("enter the book name")
+    self.book=input()
+    return self.book
+  def returnbook(self):                                    #Returning a book
+    print("enter the book u return")
+    self.book=input()
+    if self.book in self.booklist:
+      print("book is available in ur list")
+      self.booklist.remove(self.book)
+      print("And the available books in ur list")
+      print(self.booklist)
+      return self.book
+    else:
+      print("book not available,please check")
+
+lib_mus=library(['comedy','comics','anime','social','economics','general']) #create an object based on class library
+ragul=customer()                                                            #create an object based on class customer
+
+
+while True:
+  print("-------------------------")
+  print("select the option below")
+  print("1.list of books available \n2.lend a book \n3.Borrowed books \n4.returning a book \n0.exit")
+  option=int(input())
+  if option==1.:
+    lib_mus.show()
+  elif option==2:
+    reqbook=ragul.requested_book()
+    status=lib_mus.lend_book(reqbook)
+    if status == True:
+      ragul.add_book(reqbook)
+  elif option == 3:
+      ragul.show()
+  elif option==4:
+    ret_book=ragul.returnbook()
+    lib_mus.update_book(ret_book)
+  elif option == 0:
+    print("thank you")
+    break
