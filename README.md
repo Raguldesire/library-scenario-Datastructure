@@ -1,2 +1,2 @@
 In this project,we got to know about the OOPs concept and Data Structures...
-Let's see some of the insights here
+Let's see some of the insights from this project.
